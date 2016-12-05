@@ -1,0 +1,2 @@
+# hybrid_ejs
+一个混合应用开发框架，H5页面与原生容器通过JSBridge交互，本demo配有相应JSBridge讲解文章，以及示例APK的演示
