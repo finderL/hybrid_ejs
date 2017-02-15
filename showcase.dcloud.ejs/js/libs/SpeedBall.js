@@ -54,6 +54,9 @@
 			}
 			options = options || {};
 			var $this = this;
+			
+			//生成对外开放的api
+			$this.api = $this.initApi();
 
 			$this.options = options;
 			//创建canvas
@@ -91,77 +94,14 @@
 			//开启更新动画
 			$this.update();
 			//测试清除
-			setTimeout(function() {
-				//console.log("清除");
-				//$this.dispose();
-			}, 3000);
+//			setTimeout(function() {
+//				console.log("清除");
+//				$this.dispose();
+//			}, 3000);
+			
+			return $this.api;
 		}
-		/**
-		 * @description change事件
-		 */
-		Effect.prototype.change = function() {
-			var $this = this;
-			var options = $this.options;
-
-			//波浪的幅度,默认为 1/20
-			var wavePercent = options.wavePercent || 1 / 20;
-			//当percent大于90和小于10的时候要特殊处理
-			if($this.percent <= .2) {
-				wavePercent = wavePercent / 2;
-				if($this.percent <= .1) {
-					wavePercent = wavePercent / 3;
-					if($this.percent <= .03) {
-						wavePercent = wavePercent / 5;
-					}
-				}
-			} else if($this.percent >= .8) {
-				wavePercent = wavePercent / 2;
-				if($this.percent >= .9) {
-					wavePercent = wavePercent / 2;
-					if($this.percent >= .95) {
-						wavePercent = wavePercent / 10;
-					}
-				}
-			}
-			//定义当前波浪上下波动的幅度,默认为15分之一的高度
-			$this.wave = options.wave || 2 * $this.radius * wavePercent;
-			//console.log("wave:" + $this.wave);
-			if(typeof $this.wave === 'string') {
-				$this.wave = parseInt($this.wave) || 0;
-			}
-
-			//最多为1,最小为0
-			if($this.percent >= 1) {
-				$this.percent = 1;
-				//这时候幅度不存在
-				$this.wave = 0;
-			} else if($this.percent <= 0) {
-				$this.percent = 0;
-				$this.wave = 0;
-			}
-
-			var color0 = genrateColorByPercent($this.percent, 'inner');
-			var color1 = genrateColorByPercent($this.percent, 'outter');
-			var color2 = genrateColorByPercent($this.percent, 'txt');
-			//		console.log("color0:"+color0);
-			//		console.log("color1:"+color1);
-			//		console.log("color2:"+color2);
-			//如果存在设置的颜色
-			color0 = options.colorInner || color0;
-			color1 = options.colorOutter || color1;
-			color2 = options.colorTxt || color2;
-			$this.lines = [color0, color1];
-			$this.txtColor = color2;
-			//显示的文字
-			$this.txt = options.txt || '';
-			$this.isShowPercent = options.isShowPercent || true;
-			//console.log("lines:" + JSON.stringify($this.lines));
-
-			//如果没有动画,更新后绘制一次,否则动画会自己绘制
-			if(!$this.isAnimation) {
-				$this.draw();
-			}
-		};
+		
 		/**
 		 * @description 通过传入当前的percent和type返回一个最终的canvas颜色
 		 * 颜色是通过一些内置的颜色以及换算方法计算出来的
@@ -422,6 +362,102 @@
 
 		};
 		/**
+		 * @description 更新,有动画时需要用到
+		 */
+		Effect.prototype.update = function() {
+			var $this = this;
+			//循环函数
+			//本来想update调用自身的,但是发现requestAnimFrame不能apply this...
+			var loop = function() {
+				$this.draw();
+				//步长增加
+				$this.step++;
+				$this.step = ($this.step >= 360) ? (0) : $this.step;
+				//console.log("step:"+$this.step);
+				//必须是在使用动画的时候才会有动画效果
+				if(!$this.isDie && $this.isAnimation) {
+					requestAnimFrame(loop);
+				} else {
+					//已经死亡了,不进行操作
+					//可以调用死亡方法,死亡方法中可以将一些变量手动置为null
+				}
+			};
+			loop();
+		};
+		/**
+		 * @description change事件,改变加速球的百分比
+		 * @param {String} percent 需要变动的percent
+		 */
+		Effect.prototype.change = function(percent) {
+			var $this = this;
+			var options = $this.options;
+			if(percent == null) {
+				//默认值
+				percent = $this.percent;
+			} else {
+				$this.percent = percent;
+			}
+
+			//波浪的幅度,默认为 1/20
+			var wavePercent = options.wavePercent || 1 / 20;
+			//当percent大于90和小于10的时候要特殊处理
+			if($this.percent <= .2) {
+				wavePercent = wavePercent / 2;
+				if($this.percent <= .1) {
+					wavePercent = wavePercent / 3;
+					if($this.percent <= .03) {
+						wavePercent = wavePercent / 5;
+					}
+				}
+			} else if($this.percent >= .8) {
+				wavePercent = wavePercent / 2;
+				if($this.percent >= .9) {
+					wavePercent = wavePercent / 2;
+					if($this.percent >= .95) {
+						wavePercent = wavePercent / 10;
+					}
+				}
+			}
+			//定义当前波浪上下波动的幅度,默认为15分之一的高度
+			$this.wave = options.wave || 2 * $this.radius * wavePercent;
+			//console.log("wave:" + $this.wave);
+			if(typeof $this.wave === 'string') {
+				$this.wave = parseInt($this.wave) || 0;
+			}
+
+			//最多为1,最小为0
+			if($this.percent >= 1) {
+				$this.percent = 1;
+				//这时候幅度不存在
+				$this.wave = 0;
+			} else if($this.percent <= 0) {
+				$this.percent = 0;
+				$this.wave = 0;
+			}
+
+			var color0 = genrateColorByPercent($this.percent, 'inner');
+			var color1 = genrateColorByPercent($this.percent, 'outter');
+			var color2 = genrateColorByPercent($this.percent, 'txt');
+			//		console.log("color0:"+color0);
+			//		console.log("color1:"+color1);
+			//		console.log("color2:"+color2);
+			//如果存在设置的颜色
+			color0 = options.colorInner || color0;
+			color1 = options.colorOutter || color1;
+			color2 = options.colorTxt || color2;
+			$this.lines = [color0, color1];
+			$this.txtColor = color2;
+			//显示的文字
+			$this.txt = options.txt || '';
+			$this.isShowPercent = options.isShowPercent || true;
+			//console.log("lines:" + JSON.stringify($this.lines));
+
+			//如果没有动画,更新后绘制一次,否则动画会自己绘制
+			if(!$this.isAnimation) {
+				$this.draw();
+			}
+		};
+		/**
 		 * @description shake事件,调用这个事件后
 		 * 360加速球会抖动,抖动频率和时间根据传入参数,抖动幅度就是默认的wave
 		 * 注意,连续调用shake也可进行叠加
@@ -451,29 +487,7 @@
 				count++;
 			}, 1000 / 60);
 		};
-		/**
-		 * @description 更新,有动画时需要用到
-		 */
-		Effect.prototype.update = function() {
-			var $this = this;
-			//循环函数
-			//本来想update调用自身的,但是发现requestAnimFrame不能apply this...
-			var loop = function() {
-				$this.draw();
-				//步长增加
-				$this.step++;
-				$this.step = ($this.step >= 360) ? (0) : $this.step;
-				//console.log("step:"+$this.step);
-				//必须是在使用动画的时候才会有动画效果
-				if(!$this.isDie && $this.isAnimation) {
-					requestAnimFrame(loop);
-				} else {
-					//已经死亡了,不进行操作
-					//可以调用死亡方法,死亡方法中可以将一些变量手动置为null
-				}
-			};
-			loop();
-		};
+		
 
 		/**
 		 * @description 销毁,释放
@@ -482,6 +496,28 @@
 			var $this = this;
 			//死亡标识
 			$this.isDie = true;
+		};
+		
+		/**
+		 * @description 生成对外的api
+		 * 并不是所有原型方法都运行对外访问的，只允许部分api访问
+		 */
+		Effect.prototype.initApi = function() {
+			var $this = this;
+			var api = {
+				'shake':function(){
+					$this.shake.apply($this,arguments);
+				},
+				'dispose':function(){
+					$this.dispose.apply($this,arguments);
+				},
+				'change': function(){
+					$this.change.apply($this,arguments);
+				},
+			};
+			
+			
+			return api;
 		};
 
 		/**
