@@ -1,0 +1,76 @@
+<!-- 
+        作者：dailc 
+        时间：2017-01-12
+        描述：新人手册->表单提交页面
+-->
+<!DOCTYPE html >
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<!--之所以在头部引入了js,是因为这个js是一个全局配置文件,通过这个js动态写入的js和css可以用来控制缓存是否过期
+			一般情况下,如果要考虑缓存,都要这么使用
+			下面那个通过write写入配置文件,保证每次配置文件都是最新的
+		-->
+		<script>
+			document.write("<script type='text/javascript' src='../../js/core/RayApp/cacheControl.config.js?" + Math.random() + "'></scr" + "ipt>");
+		</script>
+		<script>
+			//引入css文件
+			SrcBoot.output([
+				'css/mui.min.css',
+				'css/common/common.css'
+			]);
+		</script>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<h5>账号：</h5>
+			<div class="mui-input-row mui-password">
+				<input type="text" class="mui-input-clear" id="account">
+			</div>
+			<h5>密码：</h5>
+			<div class="mui-input-row mui-password">
+				<input type="password" class="mui-input-password" id="password">
+			</div>
+			<h5>说明:</h5>
+			<div class="mui-input-row" >
+				<textarea id="description" rows="5" placeholder="多行文本框"></textarea>
+			</div>
+			<h5>选项</h5>
+			<select class="mui-btn mui-btn-block" id="select">
+				<option value="choose1">选项1</option>
+				<option value="choose2">选项2</option>
+				<option value="choose3">选项3</option>
+			</select>
+			<h5>单选</h5>
+			<div class="radio-type" id="radioChoose">
+				<div class="mui-input-row mui-radio mui-left ">
+					<label>单选1</label>
+					<input  name="radio1" type="radio" checked value="radio1">
+				</div>
+				<div class="mui-input-row mui-radio mui-left ">
+					<label>单选2</label>
+					<input  name="radio1" type="radio" value="radio2">
+				</div>
+			</div>
+			
+			<h5>是否选中</h5>
+			<div class="mui-input-row mui-checkbox mui-left">
+				<label>选中</label>
+				<input  type="checkbox" value="chooseIsRight" id="isChoose">
+			</div>
+					
+			<button type="button" class="mui-btn mui-btn-block mui-btn-primary btn-submit">提交</button>
+		</div>
+	</body>
+	<script>
+		SrcBoot.outSeaConfig();
+	</script>
+	<script>
+		seajs.use('js/bizlogic/freshmanual/03formSumbit.js');
+	</script>
+
+</html>

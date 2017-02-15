@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>表单测试</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script>
+			//这是属于老版的缓存控制方案,后续的自定构建解决缓存也兼容这种模式,所以写法没问题
+			document.write("<script type='text/javascript' src='../../js/core/RayApp/cacheControl.config.js?" + Math.random() + "'></scr" + "ipt>");
+		</script>
+		<script>
+			//支持项目相对路径和绝对路径
+			SrcBoot.output([
+				'css/mui.min.css',
+				'css/libs/mui.picker.min.css',
+				'css/libs/mui.poppicker.css',
+				'css/common/common.css',
+				
+			]);
+		</script>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">表单测试</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-content-padded" style="margin: 5px;">
+				<h5>输入框：</h5>
+				<div class="mui-input-row">
+					<input id="textbox" bind="textbox" type="text" class="ep-mui-textbox mui-input-clear" placeholder="">
+				</div>
+				<h5>多行输入框：</h5>
+				<div class="mui-input-row">
+					<textarea id="textarea" bind="textarea" class="ep-mui-textarea" rows="5" placeholder="多行文本框"></textarea>
+				</div>
+				<h5>日期选择框：</h5>
+				<input id="dtpicker" bind="time" type="text" class="ep-mui-datepicker" readonly="readonly" />
+				<h5>下拉框：</h5>
+				<button id='picker' bind="picker" class="ep-mui-combobox mui-btn-block" type='button'>二级联动示例 ...</button>
+				<h5>单选列表：</h5>
+				<ul id="radioList" class="ep-mui-radiobuttonlist mui-input-group" bind="radio" action="getRadio">
+
+				</ul>
+				<h5>复选列表：</h5>
+				<ul id="checkList" class="ep-mui-checkboxlist mui-input-group" bind="checkbox" action="getCheckbox" >
+
+				</ul>
+				<div class="mui-button-row">
+					<button type="button" class="mui-btn mui-btn-primary" onclick="getData()">提交数据</button>
+				</div>
+			</div>
+		</div>
+		<!-- 通用seajs配置 -->
+		<script>
+			//将需要的配置文件进行封装函数,可以省去重复代码
+			//所有的seajs别名或者项目中bizlogic文件夹下的js都需要在seaBizConfig.js中设置别名,通过别名引用
+			//实际项目中请删除这些注释
+			SrcBoot.outSeaConfig();
+		</script>
+		<script>
+			seajs.use('js/bizlogic/f9Simple/form.js');
+		</script>
+	</body>
+
+</html>

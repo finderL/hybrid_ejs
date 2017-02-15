@@ -1,0 +1,75 @@
+<!-- 
+        作者：dailc
+        时间：2017-01-10
+        描述：  下拉刷新div模式
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+		<title>选项卡切换+下拉刷新</title>
+		<script>
+			document.write("<script type='text/javascript' src='../../js/core/RayApp/cacheControl.config.js?" + Math.random() + "'></scr" + "ipt>");
+		</script>
+		<script>
+			SrcBoot.output([
+				'css/mui.min.css',
+				'css/common/common.css',
+				'css/common/common_list.css',
+				'../../css/pullToRefresh/demo_pullRefresh_div_custom.css'
+			]);
+		</script>
+	</head>
+
+	<body>
+
+		
+			<!-- fullscreen解决下拉刷新原生不显示问题 -->
+			<div id="slider" class="mui-content mui-slider mui-fullscreen">
+				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<a id="groupTitle" class="mui-control-item mui-active" href="#item1mobile">
+						下拉刷新皮肤1
+					</a>
+					<a id="personTitle" class="mui-control-item control-line-item" href="#item2mobile">
+						下拉刷新皮肤2
+					</a>
+
+				</div>
+				<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-6">
+					<div class="custom-progressbar">
+					</div>
+				</div>
+				<div class="mui-slider-group">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+						<div class="mui-scroll-wrapper" id="pullrefresh1">
+							<div class="mui-scroll">
+								<ul class="mui-table-view" id="listdata1">
+
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item2mobile" class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper" id="pullrefresh2">
+							<div class="mui-scroll">
+								<ul class="mui-table-view" id="listdata2">
+
+								</ul>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+		<script>
+			SrcBoot.outSeaConfig();
+		</script>
+		<script>
+			seajs.use('js/bizlogic/pullToRefresh/demo_pullRefresh_div_custom.js');
+		</script>
+	</body>
+
+</html>

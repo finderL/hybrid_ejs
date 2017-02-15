@@ -1,0 +1,41 @@
+<!-- 
+        作者：dailc 
+        时间：2017-01-17
+        描述：新人手册->图片轮播页面的示例
+-->
+<!DOCTYPE html >
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<!--之所以在头部引入了js,是因为这个js是一个全局配置文件,通过这个js动态写入的js和css可以用来控制缓存是否过期
+			一般情况下,如果要考虑缓存,都要这么使用
+			下面那个通过write写入配置文件,保证每次配置文件都是最新的
+		-->
+		<script>
+			document.write("<script type='text/javascript' src='../../js/core/RayApp/cacheControl.config.js?"+Math.random()+"'></scr"+"ipt>"); 
+		</script>
+		<script>
+			//引入css文件
+			SrcBoot.output([
+				'css/mui.min.css',
+				'css/common/common.css'
+			]);
+		</script>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<div id="gallerySlider">
+			</div>
+		</div>
+	</body>
+	<script>
+		SrcBoot.outSeaConfig();
+	</script>
+	<script>
+		seajs.use('js/bizlogic/freshmanual/07gallerySlider.js');
+	</script>
+
+</html>

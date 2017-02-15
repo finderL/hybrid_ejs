@@ -1,0 +1,77 @@
+/**
+ * 文件上传相关样式
+ * @author dailc
+ */
+
+.upload-pretty {
+	position: relative;
+	/*盒模型*/
+	display: inline-block;
+	padding: 10px;
+	overflow: hidden;
+	/*文字排版*/
+	font-size: 16px;
+	color: #000000;
+	
+	
+	/*视觉外观*/
+	background: #fafafa;
+	border: 1px solid #eee;
+    border-radius: 5px;
+    
+   
+}
+.upload-pretty:hover {
+    color: #333;
+    background: #eee;
+    border-color: #ccc;
+    text-decoration: none
+}
+.upload-pretty input {
+	/*定位相关*/
+	position: absolute;
+	top: 0;
+	right: 0;
+	/*文字排版*/
+	/*这一点很重要,设置字体后,input宽度会变宽,否则无法充满父级div
+	 具体为font-size越大,越宽,一般认为100px就足矣*/
+	font-size: 100px;
+	/*其它*/
+	opacity: 0;
+	cursor: pointer
+}
+
+
+.img-container {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	overflow: hidden;
+	border-top: 1px solid #adadad;
+	border-bottom: 1px solid #adadad;
+	overflow: hidden;
+}
+/**
+ * 图片附件有关
+ */
+.img-container .img-photo {
+    height: 60px;
+    width: 60px;
+    -webkit-background-size: 60px 60px;
+    background-size: 60px 60px;
+    border: none;
+    float: left;
+    margin: 0px 2px;
+}
+.img-container .plus-pic {
+	/*让这个的zindex比图片预览的低*/
+    z-index: 1;
+    position: absolute;
+    left: 50px;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+}
+.img-container .add-img {
+	padding:10px 0px;
+	position: relative;
+}

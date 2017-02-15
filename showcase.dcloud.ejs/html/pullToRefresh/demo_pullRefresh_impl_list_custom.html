@@ -1,0 +1,51 @@
+<!-- 
+        作者：dailc 
+        时间：2017-01-10
+        描述： 下拉刷新-通用子页面,里面进行皮肤切换
+         -通过回调来手动获取参数等
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<script>
+			document.write("<script type='text/javascript' src='../../js/core/RayApp/cacheControl.config.js?" + Math.random() + "'></scr" + "ipt>");
+		</script>
+		<script>
+			SrcBoot.output([
+				'css/mui.min.css',
+				'css/common/common.css',
+				'../../css/common/common_search.css',
+				'../../css/common/repailTopPocket45.css'
+			]);
+		</script>
+	</head>
+
+	<body>
+			<div id="pullrefresh" class="mui-scroll-wrapper mui-content pt0">
+				
+				<div class="mui-scroll">
+					<!--通用样式4，mui的搜索,思路为两层，一层是搜索，一层是placeholder -->
+					<div class="common-input-type4">
+						<div class="mui-input-row mui-search">
+							<input type="search" class="mui-input-clear" placeholder="" id="input-searchName">
+						</div>
+						
+					</div>
+					<ul class="mui-table-view" id="listdata">
+	
+					</ul>
+				</div>
+			</div>		
+	</body>
+	<!-- 通用js -->
+	<script>
+		SrcBoot.outSeaConfig();
+	</script>
+	<script>
+		seajs.use('js/bizlogic/pullToRefresh/demo_pullRefresh_impl_list_custom.js');
+	</script>
+
+</html>

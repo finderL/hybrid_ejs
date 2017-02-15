@@ -1,0 +1,56 @@
+<!-- 
+        作者：dailc 
+        时间：2017-01-12
+        描述：新人手册->下拉刷新示例
+-->
+<!DOCTYPE html >
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<!--之所以在头部引入了js,是因为这个js是一个全局配置文件,通过这个js动态写入的js和css可以用来控制缓存是否过期
+			一般情况下,如果要考虑缓存,都要这么使用
+			下面那个通过write写入配置文件,保证每次配置文件都是最新的
+		-->
+		<script>
+			document.write("<script type='text/javascript' src='../../js/core/RayApp/cacheControl.config.js?" + Math.random() + "'></scr" + "ipt>");
+		</script>
+		<script>
+			//引入css文件
+			SrcBoot.output([
+				'css/mui.min.css',
+				'css/common/common.css',
+				'../../css/common/common_search.css',
+			]);
+		</script>
+	</head>
+
+	<body>
+		<!--下拉刷新容器，所有皮肤都采用同一种dom结构，搜索栏不用可以去掉
+			-->
+		<div id="pullrefresh" class="mui-scroll-wrapper mui-content pt0">
+			<div class="mui-scroll">
+				<!--通用样式2 -->
+				<div class="common-input-row common-input-type2">
+					<div class="common-input ">
+						<span class="btn-search mui-icon mui-icon-search"></span>
+						<input type="text" class="common-input-clear" placeholder="搜索" id="input-searchName">
+					</div>
+					<span class="btn-search-txt " id="searchBtn">确定</span>
+				</div>
+
+				<ul class="mui-table-view" id="listdata">
+
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script>
+		SrcBoot.outSeaConfig();
+	</script>
+	<script>
+		seajs.use('js/bizlogic/freshmanual/04pullToRefresh.js');
+	</script>
+
+</html>

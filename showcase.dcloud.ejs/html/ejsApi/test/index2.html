@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>JSBridge</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1, user-scalable=no"/>
+    <style>
+
+    </style>
+</head>
+
+<body>
+<div>
+    <h3>JSBridge 测试</h3>
+</div>
+
+<ul class="list">
+    <li>
+        <div>
+            <button onclick="callAPI('epoint_bridge',1,'showMsgDialog',{'title':'测试标题','message':'你好啊'})">
+                显示消息对话框
+            </button>
+        </div>
+    </li>
+    <br/>
+</ul>
+
+<ul class="list">
+    <li>
+        <div>
+            <button onclick="callAPI('epoint_bridge',2,'showConfirmDialog',{'title':'测试标题','message':'你好啊','btn1':'确认','btn2':'取消'})">
+                显示确认对话框
+            </button>
+        </div>
+    </li>
+    <br/>
+</ul>
+
+<ul class="list">
+    <li>
+        <div>
+            <button onclick="callAPI('epoint_bridge',3,'setSwipeRefreshEnable',{'swipeRefreshEnable':true})">
+                开启下拉刷新
+            </button>
+        </div>
+    </li>
+    <br/>
+</ul>
+
+<ul class="list">
+    <li>
+        <div>
+            <button onclick="callAPI('epoint_bridge',5,'setSwipeRefreshEnable',{'swipeRefreshEnable':false})">
+                禁用下拉刷新
+            </button>
+        </div>
+    </li>
+    <br/>
+</ul>
+<ul class="list">
+    <li>
+        <div>
+            <button onclick="callAPI('epoint_bridge',6,'setConfigValue',{'config_key':'MOA_KEY_LoginId','config_value':'testValue'})">
+                setConfigValue
+            </button>
+        </div>
+    </li>
+    <li>
+        <div>
+            <button onclick="callAPI('epoint_bridge',7,'getConfigValue',{'config_key':'MOA_KEY_LoginId'})">
+                getConfigValue
+            </button>
+        </div>
+    </li>
+    <br/>
+</ul>
+<a  href="http://218.4.136.114:8009/nnxmgl/frame/pages/attachstorageinfo/attachdown.jspx?attachGuid=e0c4d8b8-4789-401b-a477-297801402b7c">测试公司框架通用附件</a>
+<br />
+<a  href="http://app.epoint.com.cn/staticResource/test/test.txt">test.txt</a>
+<br />
+<a  href="http://app.epoint.com.cn/staticResource/test/test2.txt">test2.txt</a>
+<br />
+<a  href="http://app.epoint.com.cn/staticResource/test/test.docx">test.docx</a>
+<br />
+<a  href="http://app.epoint.com.cn/staticResource/test/测试文本.txt">测试文本.txt</a>
+<br />
+<a  href="http://app.epoint.com.cn/staticResource/test/test.zip">test.zip</a>
+<br />
+<label id="callbackmsg" ></label>
+
+</body>
+
+
+<script>
+    function callAPI(API_Name ,callbackId,handlerName,data){
+        var uri = "EpointJSBridge://"+API_Name+":"+callbackId+"/"+handlerName+"?"+JSON.stringify(data);
+        var messagingIframe = document.createElement('iframe');
+        messagingIframe.src = uri;
+        window.prompt(uri, "");
+    };
+
+    var JSBridge = {
+		_handleMessageFromNative: function(callback) {
+		    document.getElementById("callbackmsg").innerHTML = JSON.stringify(callback);
+		    if(2 == callback.responseData.code){
+		    	setTimeout(function(){
+		    		callAPI('epoint_bridge',4,'stopSwipeRefresh',{})
+		    	},3000);
+		    }
+            <!--alert(JSON.stringify(callback));-->
+		}
+	};
+
+</script>
+</html>

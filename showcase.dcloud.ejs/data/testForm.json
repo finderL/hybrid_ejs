@@ -1,0 +1,80 @@
+{
+	"controls": [
+		{
+			"id": "textbox",
+			"value": "输入框数据"
+		}, {
+			"id": "textarea",
+			"value": "多行文本多行文本\n多行文本"
+		}, {
+			"id": "dtpicker",
+			"value": "2017-01-01"
+		}, {
+			"id": "picker",
+			"value": "lj",
+			"text": "逻辑",
+			"data": [
+				{
+					"value": "ywj",
+					"text": "董事长 叶文洁"
+				}, {
+					"value": "aaa",
+					"text": "总经理 艾AA"
+				}, {
+					"value": "lj",
+					"text": "罗辑"
+				}, {
+					"value": "ymt",
+					"text": "云天明"
+				}, {
+					"value": "shq",
+					"text": "史强"
+				}, {
+					"value": "zhbh",
+					"text": "章北海"
+				}, {
+					"value": "zhy",
+					"text": "庄颜"
+				}, {
+					"value": "gyf",
+					"text": "关一帆"
+				}, {
+					"value": "zhz",
+					"text": "智子"
+				}, {
+					"value": "gezh",
+					"text": "歌者"
+				}
+			]
+		}, {
+			"id": "radioList",
+			"value": "fish",
+			"data": [{
+				"text": "篮球",
+				"value": "basketball"
+			}, {
+				"text": "足球",
+				"value": "football"
+			}, {
+				"text": "钓鱼",
+				"value": "fish"
+			}]
+		}, {
+			"id": "checkList",
+			"value": "basketball,football",
+			"data": [{
+				"text": "篮球",
+				"value": "basketball"
+			}, {
+				"text": "足球",
+				"value": "football"
+			}, {
+				"text": "钓鱼",
+				"value": "fish"
+			}]
+		}
+	],
+	"status": {
+		"code": 200
+	}
+}

@@ -1,0 +1,77 @@
+/**
+ * 通用详情
+ * @author dailc
+ */
+html {
+	font-size: 20px;
+}
+
+body {
+	font-size: 0.8rem;
+	padding: 0;
+	background: #ffffff;
+}
+
+.mui-content {
+	background: #ffffff;
+}
+
+
+/*************************标题栏目模块********************/
+
+.title-container {
+	margin-top: 0.6rem;
+	border-bottom: 1px solid #c4c4c4;
+	padding: 0.5rem;
+	overflow: hidden;
+}
+
+.title-tips {
+	margin-top: 0.6rem;
+}
+
+.news-title {
+	display: block;
+	color: #000000;
+	font-size: 0.8rem;
+	font-weight: 900;
+}
+
+.news-tips-left {
+	float: left;
+	font-size: 0.6rem;
+	color: #ADADAD;
+}
+
+.news-tips-right {
+	float: left;
+	margin-left: .6rem;
+	font-size: 0.6rem;
+	color: #ADADAD;
+}
+
+
+/*******************内容模块******************************/
+
+.content-container {
+	padding: 10px;
+}
+
+.content-container img {
+	max-width: 100%;
+	padding: 15px;
+}
+
+.news-content {
+	margin: 0;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 0.7rem;
+	/*color: #666666;*/
+	line-height: 21px;
+	word-break: break-all;
+}
+
+.news-content p {
+	font-size: 0.6rem !important;
+}

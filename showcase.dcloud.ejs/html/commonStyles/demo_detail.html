@@ -1,0 +1,75 @@
+<!-- 
+        作者：dailc 
+        时间：2017-01-16
+        描述：常用页面->详情页面
+-->
+<!DOCTYPE html >
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<!--之所以在头部引入了js,是因为这个js是一个全局配置文件,通过这个js动态写入的js和css可以用来控制缓存是否过期
+			一般情况下,如果要考虑缓存,都要这么使用
+			下面那个通过write写入配置文件,保证每次配置文件都是最新的
+		-->
+		<script>
+			document.write("<script type='text/javascript' src='../../js/core/RayApp/cacheControl.config.js?" + Math.random() + "'></scr" + "ipt>");
+		</script>
+		<script>
+			//引入css文件
+			SrcBoot.output([
+				'css/mui.min.css',
+				'css/common/common.css',
+				'css/commonStyles/demo_detail.css'
+			]);
+		</script>
+	</head>
+
+	<body>
+		<div class="extras">
+			<button class="mui-btn mui-btn-block " id="btn-change">字体切换(+A)</button>
+		</div>
+
+		<div class="mui-content">
+			<div class="title-container">
+				<span class="news-title" id="title">详情标题</span>
+				<div class="title-tips">
+					<span class="news-tips-left">2017-01-16</span>
+					<span class="news-tips-right">发布者是admin</span>
+				</div>
+			</div>
+			<div class="content-container">
+				<img src="../../img/img_test.jpg" />
+
+				<div class="news-content">
+					<p>
+						详情内容1
+					</p>
+					<p>
+						详情内容2详情内容2详情内容2详情内容2详情内容2详情内容2详情内容2详情内容2详情内容2详情内容2详情内容2详情内容2
+					</p>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../../js/libs/mui.min.js"></script>
+		<script>
+			mui.ready(function() {
+				//此函数仅用来测试字体的缩放，如果仅有样式，请忽略
+				mui('.extras').on('tap', '#btn-change', function() {
+					
+					var text = this.innerText;
+					if(text.indexOf('+') !== -1) {
+						text = '字体切换(-A)';
+						document.querySelector('html').style.fontSize = '25px';
+					} else {
+						text = '字体切换(+A)';
+						document.querySelector('html').style.fontSize = '20px';
+					}
+					this.innerText = text;
+				});
+			});
+		</script>
+	</body>
+
+</html>

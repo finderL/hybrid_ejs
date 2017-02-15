@@ -1,0 +1,21 @@
+{
+	"controls": [{
+			"id": "list",
+			"total": 18,
+			"data": [{
+					"text": "item1"
+				}, {
+					"text": "item2"
+				}, {
+					"text": "item3"
+				}, {
+					"text": "item4"
+				}, {
+					"text": "item5",
+					"isLeaf": true
+				}]
+		}],
+	"status": {
+		"code": 200
+	}
+}
