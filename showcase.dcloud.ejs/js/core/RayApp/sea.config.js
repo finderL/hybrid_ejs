@@ -129,6 +129,7 @@
 			'UpLoadH5Tools_Core': 'js/core/RayApp/Tools/Tools.UpLoadH5.js',
 			//图片轮播
 			'GallerySliderTools_Core': 'js/core/RayApp/Tools/Tools.GallerySlider.js',
+			'VerifyCodeTools_Core': 'js/core/RayApp/Tools/Tools.VerifyCode.js',
 			//UITools  基于ejs nativeUi的一次拓展，暂时用ejs的 api模块来替代
 			'UITools_Core': 'js/core/RayApp/Tools/Tools.UI.js',
 			

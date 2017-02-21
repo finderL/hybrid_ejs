@@ -1,0 +1,42 @@
+<!-- 
+        作者：戴荔春 
+        时间：2015-05-25
+        描述：h5上传文件-框架中uploadH5封装的
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<script>
+			document.write("<script type='text/javascript' src='../../js/core/RayApp/cacheControl.config.js?" + Math.random() + "'></scr" + "ipt>");
+		</script>
+		<script>
+			SrcBoot.output([
+				'css/mui.min.css',
+				'css/common/common.css'
+			]);
+		</script>
+
+	</head>
+
+	<body>
+		
+		<div class="mui-content" id="ejs-app">
+			<input type="file" id="testInput" />
+			<button type="button" id="btn-uploader">上传</button>
+			<div id="tips">
+
+			</div>
+		</div>
+		<script>
+			SrcBoot.outSeaConfig();
+		</script>
+		<script>
+			seajs.use('js/bizlogic/upload/demo_uploadFile_h5_uploadH5.js');
+		</script>
+	</body>
+
+</html>

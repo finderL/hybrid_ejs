@@ -1,0 +1,54 @@
+<!-- 
+        作者：dailc
+        时间：2017-02-17
+        描述：测试授权时的回调页面
+    第二个回调页面与第一个回调页面js是一致的，只是地址不同而已
+    30服务器的测试授权
+-->
+<!DOCTYPE html >
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<script type="text/javascript" src="../../js/core/RayApp/cacheControl.config.js" ></script>
+		<link rel="stylesheet" href="../../css/mui.min.css" />
+		<link rel="stylesheet" href="../../css/common/common.css" />
+		<title>网页授权信息展示页面</title>
+		<style>
+			.userinfo-container,.attribute {
+				word-break: break-all;
+			}
+			.attribute {
+				display: block;
+				margin-top: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content pt0" id="ejs-app">
+			<ul id="userinfo-container">
+<li class="item">
+    <span class="attribute">
+       code:{{code}}
+    </span>
+    <span class="attribute">
+              当前地址:{{pageUrl}}
+    </span>
+     <span class="attribute" id="token">
+        token:
+    </span>
+</li>
+
+			</ul>
+		</div>
+	</body>
+	<script>
+		SrcBoot.outSeaConfig();
+	</script>
+	<script>
+		seajs.use('js/bizlogic/oauth/demo_oauth_callback.js');
+	</script>
+
+</html>

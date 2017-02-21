@@ -1,0 +1,49 @@
+<!-- 
+        作者：戴荔春 
+        时间：2015-05-25
+        描述： 图片工具类相关
+        包括有mui图片预览的操作
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<script>
+			document.write("<script type='text/javascript' src='../../js/core/RayApp/cacheControl.config.js?" + Math.random() + "'></scr" + "ipt>");
+		</script>
+		<script>
+			SrcBoot.output([
+				'css/mui.min.css',
+				'css/common/common.css',
+				'../../css/imgOperation/demo_imageTools.css'
+			]);
+		</script>
+
+	</head>
+
+	<body>
+		<div class="mui-content" id="ejs-app">
+			<div class="img-container">
+				<div id="img-group">
+				</div>
+				<div id="addImg" class="mui-pull-left pic-div add-img">
+					<img class="img-photo" src="../../img/imgOperation/img_addphoto.png" />
+					<div class="closeLayer common-hidden">
+						<img src="../../img/imgOperation/img_delete_error.png" class="plus-pic" />
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<script>
+			SrcBoot.outSeaConfig();
+		</script>
+		<script>
+			seajs.use('js/bizlogic/imgOperation/demo_imageTools.js');
+		</script>
+	</body>
+
+</html>

@@ -19,7 +19,7 @@
 			'bizlogic_common_ejs_default': 'js/bizlogic/common/bizlogic_common_ejs_default.js',
 			//自定义模块
 			'freshmanual_customeModule': 'js/bizlogic/common/bizlogic_freshmanual_customeModule.js',
-			
+			'BaiDuMap_Tools': 'js/bizlogic/common/BaiDuMapTools.js',
 		}
 	});
 	//定义普通的文件别名-通过脚本直接引入的

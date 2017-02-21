@@ -28,7 +28,7 @@ define(function(require, exports, module) {
 						//页面配置参数
 						'isDebug': true
 					}, function(result, msg, detail) {
-						EjsDefaultLitemlate.showTips(JSON.stringify(detail));
+						EjsDefaultLitemlate.showTips('1:'+JSON.stringify(detail));
 					});
 				}
 			}, {
@@ -41,7 +41,7 @@ define(function(require, exports, module) {
 						//页面配置参数
 						"nbRightText": '右侧按钮'
 					}, function(result, msg, detail) {
-						EjsDefaultLitemlate.showTips(JSON.stringify(detail));
+						EjsDefaultLitemlate.showTips('2:'+JSON.stringify(detail));
 					});
 				}
 			}, {
@@ -58,7 +58,7 @@ define(function(require, exports, module) {
 						//图片不要.png
 						"nbRightImage": img
 					}, function(result, msg, detail) {
-						EjsDefaultLitemlate.showTips(JSON.stringify(detail));
+						EjsDefaultLitemlate.showTips('3:'+JSON.stringify(detail));
 					});
 				}
 			}, {

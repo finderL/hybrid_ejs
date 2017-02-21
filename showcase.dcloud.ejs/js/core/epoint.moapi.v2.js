@@ -633,6 +633,8 @@
 							callback && callback(res.result, res.msg, res);
 						} else if(res.code == '0') {
 							error && error(res);
+						} else {
+							error && error(res);
 						}
 					});
 				} else {

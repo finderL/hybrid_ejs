@@ -1,0 +1,102 @@
+/**
+ * 作者：戴科
+ * 简介：百度地图的css
+ */
+
+body {
+	margin: 0;
+	padding: 0;
+}
+.history{
+	font-size: 14px!important;
+	color: #ffffff!important;
+}
+#container {
+	position: fixed!important;
+	top: 0px;
+	height: 200px;
+	width: 100%;
+	z-index: 99!important;
+}
+
+.search {
+	position: absolute;
+	z-index: 99;
+	width: 70%;
+	height: 40px;
+	left: 15%;
+	top: 85px;
+	background: #C6C6C6;
+	color: #FFFFFF;
+}
+
+.bottombtn{
+	width: 100%;
+	height: 45px;
+	position: fixed;
+	bottom: 0px;
+	text-align: center;
+	overflow: hidden;
+	font-size: 16px;
+}
+.leftbtn{
+	width: 50%;
+	height: 45px;
+	line-height: 45px;
+	float: left;
+	color: #ffffff;
+	background: #F0AD4E;
+}
+.rightbtn{
+	width: 50%;
+	height: 45px;
+	line-height: 45px;
+	float: left;
+	color: #ffffff;
+	background: #187BC2;
+}
+.BMapLib_cityTab {
+	width: 54px;
+	background: #ff0;
+}
+
+.BMapLib_sc_t_b {
+	width: 65px;
+	background: #ff0;
+}
+
+#addbtn {
+	display: block;
+	float: left;
+	width: 30%;
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+}
+.poilist{
+	width: 100%;
+	margin-top: 200px;
+	background: #ffffff;
+	overflow: hidden;
+}
+.poilist ul{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+.poilist ul li{
+	
+}
+.close{
+	width: 100%;
+	text-align: right;
+	font-size: 16px;
+	height: 40px;
+	margin-right: 15px;
+	line-height: 40px;
+	border-bottom: 1px solid #CCCCCC;
+}
+.qiandaoactive{
+	background: #2AC845;
+	color: #ffffff;
+}

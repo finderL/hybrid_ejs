@@ -36,7 +36,10 @@ define(function(require, exports, module) {
 					if(!CommonTools.os.ejs) {
 						self.generateHeader(title);
 					} else {
-						ejs.navigator.setTitle(title || 'ejs api(2.0)');
+						if(title) {
+							ejs.navigator.setTitle(title);
+						}
+						
 					}
 					//初始化默认业务
 					self.initBiz();

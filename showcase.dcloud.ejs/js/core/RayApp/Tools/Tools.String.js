@@ -38,6 +38,22 @@ define(function(require, exports, module) {
 		return false;
 	};
 	/**
+	 * @description 返回val的字节长度
+	 * @param {Object} val 字长
+	 * @return 返回字数（根据[字节/2]取整计算字数）
+	 */
+	exports.getByteLen = function(val) {
+		var len = 0;
+		for(var i = 0; i < val.length; i++) {
+			if(val[i].match(/[^\x00-\xff]/ig) != null) //全角
+				len += 2;
+			else
+				len += 1;
+		}
+		len = (len / 2).toFixed(0); //四舍五入 取整
+		return len;
+	};
+	/**
 	 * @description 检查字符串是否是数字
 	 * @param {String} targetStr
 	 * @return {Boolean} true or false
@@ -45,6 +61,18 @@ define(function(require, exports, module) {
 	exports.isNumber = function(targetStr) {
 		var reg = /^[0-9]*$/;
 		return checkReg(reg, targetStr);
+	};
+	/**
+	 * @description 过滤非法字符 经过测试能够几乎匹配所有的特殊字符
+	 * @param {Object} resStr 输入字符结果！@#￥%……&*（）~~！@#￥%……&*（）{}|：”《》？？《》？
+	 * @use var test="<>?:？》《《《，<><<<<><<<<<<<<|\\\\}}{{{{{PPOTWWERTYUIOSDFGHJKLXCVBNM<)(887676555433222!!@@@##$$%%<<>>??????;;;;'''''''’‘’‘；；；，，。。、。。、090-=-098776654112234567@@##￥%……&&**（（（）））））））！@#￥%……&*（））（&%￥￥#￥%……&**！@~~！！@#￥%……&*（：“：”；“”：：“《》》？？{}哈哈哈哈()~!@@##$%^^&&**(())___+[`!@#$%^&*()_!@#$%^&*()_!@#$%^&*()_+~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？]";
+	 * @example test=StringTools.filterNoFormat(test);
+	 */
+	exports.filterNoFormat = function(str) {
+		var regex = /[^\u4e00-\u9fa5\w]/g;
+		var newStr = '';
+		newStr = str.replace(regex, "")
+		return newStr;
 	};
 
 	/**
@@ -184,7 +212,18 @@ define(function(require, exports, module) {
 	exports.isPositiveInteger = function(targetStr) {
 			var reg = /^[0-9]*[1-9][0-9]*$/;
 			return checkReg(reg, targetStr);
-		}
+	};
+	/**
+	 * @description 随机一个六位数
+	 * @param 随机的位数  6
+	 */
+	exports.randomNumber = function(_idx) {
+			var str = '';
+			for(var i = 0; i < _idx; i += 1) {
+				str += Math.floor(Math.random() * 10);
+			}
+			return str;
+	};
 		/**
 		 * @description 在项目里，随机一位数也是比较常用的，下面是一段生成rowguid的一个随机数方法
 		 * @return {String} 
@@ -194,7 +233,7 @@ define(function(require, exports, module) {
 			return (65536 * (1 + Math.random()) | 0).toString(16).substring(1)
 		};
 		return t() + t() + "-" + t() + "-" + t() + "-" + t() + "-" + t() + t() + t()
-	}
+	};
 
 	/**
 	 * @description   格式化JSON数组输出
@@ -278,5 +317,27 @@ define(function(require, exports, module) {
 			pad += indent;
 		});
 		return formatted;
+	};
+	
+	/**
+	 * @description 按升序或降序将json数组排序
+	 * @param {Object} tmpInfo json数组
+	 * @param {Object} param 排序字段
+	 * @param {Object} c 降序或者升序 up  down //不传默认按照升序排序
+	 */
+	exports.SortBy = function(dataJson, param, c) {
+		var tmpInfo = [];
+		var down = function(x, y) {
+			return(eval("x." + param) > eval("y." + param)) ? -1 : 1
+		}; //通过eval对json对象的键值传参
+		var up = function(x, y) {
+			return(eval("x." + param) < eval("y." + param)) ? -1 : 1
+		};
+		if(c == "down") {
+			tmpInfo = dataJson.sort(down);
+		} else {
+			tmpInfo = dataJson.sort(up); //默认按照升序排序
+		}
+		return tmpInfo;
 	};
 });

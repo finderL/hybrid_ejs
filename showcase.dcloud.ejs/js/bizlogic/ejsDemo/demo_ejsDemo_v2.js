@@ -74,6 +74,18 @@ define(function(require, exports, module) {
 				ejs.page.openPage('html/ejsDemo/demo_ejs_skin_dayAndNight.html', '皮肤示例页面');
 				
 			}
+		}, {
+			'id': 'oauthTest',
+			'text': '测试SSO授权流程',
+			'runCode': function() {
+				ejs.page.openPage('html/oauth/demo_oauth_sso.html', 'Oauth授权页面');	
+			}
+		}, {
+			'id': 'oauthTestAutoLogin',
+			'text': '测试SSO扫码登录流程',
+			'runCode': function() {
+				ejs.page.openPage('html/oauth/demo_oauth_sso_autoLogin.html', 'SSO扫码登录页面');	
+			}
 		}]
 	});
 

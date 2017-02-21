@@ -7,10 +7,7 @@ define(function(require, exports, module) {
 	"use strict";
 	var UITools = require('UITools_Core'),
 		MControl = require('MControl_F9');
-	var isRestFul = false;
-	var rootUrl;
-	var actionUrl = '',restFulUrl = '';
-	rootUrl = isRestFul?restFulUrl:actionUrl;
+	var config = require('config_Bizlogic');
 	
 	//通用工具方法
 	(function(win) {
@@ -77,7 +74,7 @@ define(function(require, exports, module) {
 
 //				return rootPath;
 
-				return rootUrl;
+				return config.rootUrl;
 			},
 
 			// 返回适合的url
@@ -170,7 +167,7 @@ define(function(require, exports, module) {
 			// TODO: 应根据配置项决定是否需要将"a.b"类型的url转化为"a/b"
 			// 将"a.b"类型的url转化为"a/b"
 			//restFul形式才需要转换
-			if(isRestFul&&url.indexOf('.') != -1 && url.indexOf('.jspx') == -1) {
+			if(config.isRestFul&&url.indexOf('.') != -1 && url.indexOf('.jspx') == -1) {
 				url = url.replace('.', '/');
 
 			}
@@ -199,7 +196,9 @@ define(function(require, exports, module) {
 					url += '?isCommondto=true';
 				}
 			}
-
+			//加上一个测试的userguid
+			url += '&userGuid=45f0c5f9-cad2-49e6-887d-b38dfcbc23de';
+			
 			url = epm.getRightUrl(url);
 
 			return url;
@@ -340,6 +339,7 @@ define(function(require, exports, module) {
 					url: opts.url,
 					type: opts.method || "post",
 					dataType: 'json',
+					contentType: 'application/x-www-form-urlencoded;charset=UTF-8',
 					data: data,
 					success: function(data) {
 						var status = data.status,

@@ -9,6 +9,7 @@ define(function(require, exports, module) {
 
 	// EpointM依赖于mui，所以将EpointM的引入推迟到引入第三方js文件之后
 	var Epointm;
+	
 
 	CommonTools.initReady(init);
 
@@ -23,9 +24,9 @@ define(function(require, exports, module) {
 			'js/libs/mui.picker.min.js',
 			'js/libs/mui.poppicker.js'
 		], function() {
-			
-			//引入epointM
+			//在这里引入，虽然相关模块的文件会提前引入，但是却会到这会才执行，所以才不会报错
 			Epointm = require('Epointm_F9');
+			
 			//TODO: 做一些初始化事情
 			toDo();
 		});
@@ -36,16 +37,20 @@ define(function(require, exports, module) {
 	 * @description 需要做的事情
 	 */
 	function toDo() {
-//		epointm.initPage('../../data/testForm.json');
-		cd = new CommonDto();
-		cd.init({
-			url: '../../data/testForm.json',
-			method:'GET'
-		});
+		epointm.initPage("frameusereditaction");
 
 	}
-	function getData() {
-//		epointm.execute();
-		epointm.alert(JSON.stringify(cd.getData()));
+	function submit() {
+		epointm.execute("update", "", saveCallback);
 	}
+	function saveCallback (data) {
+		mui.alert (data.msg);
+	}
+
+	function refresh() {
+		epointm.refresh();
+	}
+	
+	window.submit = submit;
+	window.refresh = refresh;
 });

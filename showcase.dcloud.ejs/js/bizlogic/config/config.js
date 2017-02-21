@@ -21,6 +21,16 @@ define(function(require, exports, module) {
 	exports.validateData = 'Epoint_WebSerivce_**##0601';
 	//更新文件地址 
 	exports.updateFileUrl = '';
+	
+	//F9框架相关
+	var isRestFul = true;
+	var rootUrl = 'http://192.168.205.99:8080/EpointFrame/';
+	
+	if(isRestFul) {
+		rootUrl += 'rest/';
+	}
+	exports.isRestFul = isRestFul;
+	exports.rootUrl = rootUrl;
 	/**
 	 * 匿名函数中进行全局配置
 	 */

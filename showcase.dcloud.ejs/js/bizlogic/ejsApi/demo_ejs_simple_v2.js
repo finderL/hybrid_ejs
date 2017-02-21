@@ -12,12 +12,15 @@ define(function(require, exports, module) {
 		initBiz: function(){
 			this._super();
 			initListeners();
+			setTimeout(function(){
+				ejs.nativeUI.closeWaiting();
+			},3000);
 		}
 	});
 	
 	new LiTemplate({
 		isIndex: false,
-		title: 'ejs示例页面',
+		//title: 'ejs示例页面',
 		ejsApi: null
 	});
 	

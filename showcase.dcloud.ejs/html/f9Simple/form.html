@@ -22,36 +22,76 @@
 	</head>
 
 	<body>
-		<header class="mui-bar mui-bar-nav">
-			<h1 class="mui-title">表单测试</h1>
-		</header>
-		<div class="mui-content">
-			<div class="mui-content-padded" style="margin: 5px;">
-				<h5>输入框：</h5>
-				<div class="mui-input-row">
-					<input id="textbox" bind="textbox" type="text" class="ep-mui-textbox mui-input-clear" placeholder="">
+		<div class="page-loading"></div>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		<h1 class="mui-title">个人信息</h1>
+		<button class="mui-btn mui-btn-blue mui-text-right mui-pull-right" onclick="refresh()">刷新</button>
+		<button class="mui-btn mui-btn-blue mui-text-right mui-pull-right" onclick="submit()">提交</button>
+	</header>
+	<!-- 内容区域 -->
+	<div class="mui-content">
+		<ul class="mui-table-view mui-accordion default">
+			<li class="mui-table-view-cell mui-collapse  mui-active">
+				<a class="mui-navigate-right" href="#">基本信息</a>
+				<div class="mui-collapse-content">
+					<form class="mui-input-group">
+						<div class="mui-input-row">
+							<label>用户登录名：</label>
+							<input class="ep-mui-textbox" bind="loginId"/>
+						</div>
+						<div class="mui-input-row">
+							<label>用户姓名：</label>
+							<input class="ep-mui-textbox" bind="frameUser.displayName"/>
+						</div>
+						<div class="mui-input-row">
+							<label>职务：</label>
+							<input class="ep-mui-textbox" bind="frameUser.title"/>
+						</div>
+						<div class="mui-input-row">
+							<label>办公电话：</label>
+							<div class="ep-mui-outputtext" bind="frameUser.telephoneOffice"></div>
+						</div>
+						<div class="mui-input-row">
+							<label>家庭电话：</label>
+							<div class="ep-mui-outputtext" bind="frameUser.telephoneHome"></div>
+						</div>
+						<div class="mui-input-row">
+							<label>移动电话：</label>
+							<div class="ep-mui-outputtext" bind="frameUser.mobile"></div>
+						</div>
+						<div class="mui-input-row">
+							<label>性别：</label>
+							<div class="ep-mui-radiobuttonlist" bind="frameUser.sex" data="[{value:'男',text:'男'},{value:'女',text:'女'}]"></div>
+						</div>
+					</form>
 				</div>
-				<h5>多行输入框：</h5>
-				<div class="mui-input-row">
-					<textarea id="textarea" bind="textarea" class="ep-mui-textarea" rows="5" placeholder="多行文本框"></textarea>
+			</li>
+			<li class="mui-table-view-cell mui-collapse">
+				<a class="mui-navigate-right" href="#">扩展信息</a>
+				<div class="mui-collapse-content">
+					<form class="mui-input-group">
+						<div class="mui-input-row">
+							<label>生日：</label>
+							<input class="ep-mui-datepicker" bind="userExtendInfo.birthday" data-options='{
+								"beginYear":2015,
+								"endYear": 2020,
+								 format: "yyyy/MM/dd"
+							}' />
+						</div>
+						<div class="mui-input-row">
+							<label>身份证号：</label>
+							<div class="ep-mui-outputtext" bind="userExtendInfo.identityCardNum"></div>
+						</div>
+						<div class="mui-input-row block">
+							<label>QQ号码：</label>
+							<div class="ep-mui-outputtext" bind="userExtendInfo.qqnumber"></div>
+						</div>
+					</form>
 				</div>
-				<h5>日期选择框：</h5>
-				<input id="dtpicker" bind="time" type="text" class="ep-mui-datepicker" readonly="readonly" />
-				<h5>下拉框：</h5>
-				<button id='picker' bind="picker" class="ep-mui-combobox mui-btn-block" type='button'>二级联动示例 ...</button>
-				<h5>单选列表：</h5>
-				<ul id="radioList" class="ep-mui-radiobuttonlist mui-input-group" bind="radio" action="getRadio">
-
-				</ul>
-				<h5>复选列表：</h5>
-				<ul id="checkList" class="ep-mui-checkboxlist mui-input-group" bind="checkbox" action="getCheckbox" >
-
-				</ul>
-				<div class="mui-button-row">
-					<button type="button" class="mui-btn mui-btn-primary" onclick="getData()">提交数据</button>
-				</div>
-			</div>
-		</div>
+			</li>
+		</ul>
+	</div>
 		<!-- 通用seajs配置 -->
 		<script>
 			//将需要的配置文件进行封装函数,可以省去重复代码

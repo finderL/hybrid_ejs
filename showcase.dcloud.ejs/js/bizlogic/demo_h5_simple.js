@@ -73,6 +73,13 @@ define(function(require, exports, module) {
 				var skin = 'type2';
 				ejs.page.openPage('html/pullToRefresh/demo_pullRefresh_base_list.html?skin='+skin,'下拉刷新基础类');
 			}
+		},{
+			'id': 'demo_fileupload_h5',
+			'text': '文件上传示例',
+			'runCode': function() {
+				
+				ejs.page.openPage('html/upload/demo_uploadFile_h5_uploadH5.html','文件上传H5');
+			}
 		}]
 	});
 
